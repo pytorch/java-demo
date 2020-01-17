@@ -6,13 +6,12 @@ plugins {
 repositories {
     jcenter()
 
-    // This will not always be required.  The 1.4 release will be in jcenter.
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    // Uncomment this to use snapshot releases.
+    // maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 
 dependencies {
-    // Remember to remove "-SNAPSHOT" after 1.4 is released!
-    implementation 'org.pytorch:pytorch_java_only:1.4.0-SNAPSHOT'
+    implementation 'org.pytorch:pytorch_java_only:1.4.0'
 }
 
 def LIBTORCH_HOME = System.getenv('LIBTORCH_HOME')
