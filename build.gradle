@@ -3,15 +3,22 @@ plugins {
     id 'application'
 }
 
+def USE_NIGHTLY = System.getenv('USE_LIBTORCH_NIGHTLY')?.toBoolean()
+
 repositories {
     jcenter()
 
-    // Uncomment this to use snapshot releases.
-    // maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    if (USE_NIGHTLY) {
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
 }
 
 dependencies {
-    implementation 'org.pytorch:pytorch_java_only:1.4.0'
+    if (USE_NIGHTLY) {
+        implementation 'org.pytorch:pytorch_java_only:1.5.0-SNAPSHOT'
+    } else {
+        implementation 'org.pytorch:pytorch_java_only:1.4.0'
+    }
 }
 
 def LIBTORCH_HOME = System.getenv('LIBTORCH_HOME')
