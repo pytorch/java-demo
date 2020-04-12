@@ -18,10 +18,13 @@ If you are using PyTorch in your own environment,
 `LIBTORCH_HOME` is not necessary.
 Instead, you will need to set `java.library.path` to `/path/to/libtorch/lib`.
 
-If using a nightly build, run `export USE_LIBTORCH_NIGHTLY=1`.
+If using a nightly build, you also need to run this command `export USE_LIBTORCH_NIGHTLY=1`.
 
 Run `./gradlew run` to build and run the demo application.
 It will load `demo-model.pt` and run it on some simple data.
+
+Note: For macOS users, if you run into OS security issue regarding  "libpytorch_jni.dylib" run `xattr -r -d /path/to/libtorch/lib` to resolve that OS issue and then `./gradlew run` to build and run the demo application.
+
 [This notebook](TorchScriptForJavaDemo.ipynb) was used to generate the model.
 
 More information about the Java API and TorchScript:
