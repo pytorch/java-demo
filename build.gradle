@@ -5,6 +5,8 @@ plugins {
 
 def USE_NIGHTLY = System.getenv('USE_LIBTORCH_NIGHTLY')?.toBoolean()
 
+def LIBTORCH_VERSION = USE_NIGHTLY ? "1.5.0-SNAPSHOT" : "1.4.0";
+
 repositories {
     jcenter()
 
@@ -14,20 +16,26 @@ repositories {
 }
 
 dependencies {
-    if (USE_NIGHTLY) {
-        implementation 'org.pytorch:pytorch_java_only:1.5.0-SNAPSHOT'
-    } else {
-        implementation 'org.pytorch:pytorch_java_only:1.4.0'
-    }
+    implementation "org.pytorch:pytorch_java_only:${LIBTORCH_VERSION}"
 }
 
 def LIBTORCH_HOME = System.getenv('LIBTORCH_HOME')
 if (!LIBTORCH_HOME) {
   throw new RuntimeException('LIBTORCH_HOME not present in environment.');
 }
-if (!file(LIBTORCH_HOME).isDirectory()) {
-  throw new RuntimeException('LIBTORCH_HOME does not refer to a directory.');
+def BUILD_VERSION_FILE = new File(LIBTORCH_HOME, "build-version");
+if (!BUILD_VERSION_FILE.isFile()) {
+  throw new RuntimeException(
+    "Cannot find ${BUILD_VERSION_FILE}.  " +
+    "Make sure LIBTORCH_HOME refers to the root of the libtorch distribution.");
 }
+def installedVersion = BUILD_VERSION_FILE.readLines();
+def versionPattern = "^" + java.util.regex.Pattern.quote(LIBTORCH_VERSION) + "\\b.*";
+if (!USE_NIGHTLY && !(installedVersion[0] ==~ versionPattern)) {
+  throw new RuntimeException(
+    "Found libtorch version ${installedVersion}, but build.gradle expects ${LIBTORCH_VERSION}.");
+}
+
 
 application {
     mainClassName = 'demo.App'
