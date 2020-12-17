@@ -31,3 +31,15 @@ More information about the Java API and TorchScript:
 - [PyTorch-style JavaDoc](https://pytorch.org/docs/stable/packages.html)
 - [Standard JavaDoc](https://pytorch.org/javadoc/1.4.0/)
 - [PyTorch Android tutorial](https://pytorch.org/mobile/android/)
+
+### Example Setup for macOS with v 1.7.1
+
+``` sh
+cd ~/code/java
+wget https://download.pytorch.org/libtorch/cpu/libtorch-macos-1.7.1.zip
+unzip libtorch-macos-1.7.1.zip
+export LIBTORCH_HOME="~/code/java/libtorch"
+export USE_LIBTORCH_NIGHTLY=1
+export JAVA_HOME=$(/usr/libexec/java_home)
+./gradlew run
+```
