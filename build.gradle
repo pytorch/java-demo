@@ -5,7 +5,7 @@ plugins {
 
 def USE_NIGHTLY = System.getenv('USE_LIBTORCH_NIGHTLY')?.toBoolean()
 
-def LIBTORCH_VERSION = USE_NIGHTLY ? "1.7.0-SNAPSHOT" : "1.6.0";
+def LIBTORCH_VERSION = USE_NIGHTLY ? "1.10.0-SNAPSHOT" : "1.9.0";
 
 repositories {
     jcenter()
