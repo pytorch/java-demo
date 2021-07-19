@@ -19,6 +19,17 @@ If you are using PyTorch in your own environment,
 `LIBTORCH_HOME` is not necessary.
 Instead, you will need to set `java.library.path` to `/path/to/libtorch/lib`.
 
+It might be necessary to set the JAVA_HOME environment variable.
+On Mac, use `export JAVA_HOME=$(/usr/libexec/java_home)`.
+On Windows, with GitHub bash, try `export JAVA_HOME=/c/Progra~1/Java/jdk-*`
+
+On Mac, you might get security errors.
+You must manually approve execution for each library under libtorch.
+As a shortcut, `xattr -r -d /path/to/libtorch/lib` might work.
+
+On Windows, you will probably need to run
+`export PATH="$LIBTORCH_HOME/lib:$PATH"`.
+
 If using a nightly build, run `export USE_LIBTORCH_NIGHTLY=1`.
 
 Run `./gradlew run` to build and run the demo application.
