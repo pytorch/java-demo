@@ -7,9 +7,10 @@ This repository is a demonstration of how to use PyTorch from Java.
 Download and unpack libtorch nightly (or 1.4 or greater).
 From the pytorch.org homepage under "Quick Start Locally",
 make sure "LibTorch" is the selected package.
-Linux is supported as of version 1.4.  Mac is supported as of version 1.5.
-Linux and Mac are both supported in nightly builds.
-Windows is not supported at this time.
+Linux is supported as of version 1.4.
+Mac is supported as of version 1.5.
+Windows is supported as of version 1.9.
+All are both supported in nightly builds.
 
 Run `export LIBTORCH_HOME=/path/to/libtorch`.
 The `build.gradle` file will use this to set `java.library.path`
