@@ -40,6 +40,5 @@ More information about the Java API and TorchScript:
 - [TorchScript tutorial](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html)
 - [TorchScript reference](https://pytorch.org/docs/stable/jit.html)
 - [Loading TorchScript in C++](https://pytorch.org/tutorials/advanced/cpp_export.html)
-- [PyTorch-style JavaDoc](https://pytorch.org/docs/stable/packages.html)
-- [Standard JavaDoc](https://pytorch.org/javadoc/1.4.0/)
+- [JavaDoc](https://pytorch.org/javadoc/)
 - [PyTorch Android tutorial](https://pytorch.org/mobile/android/)
